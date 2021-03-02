@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.appdemo.mybatis.mapper.GameMapper">
+
+    <select id="getGameByVendorIdAndCode" parameterType="com.example.appdemo.mybatis.entity.Game" resultType="com.example.appdemo.mybatis.entity.Game">
+        SELECT * FROM tbs_game t WHERE t.vendor_id = #{vendorId} and t.code = #{code}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.example.appdemo.mybatis.entity.Game">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()getGameByVendorIdAndCode
+        </selectKey>
+        insert into tbs_game
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="vendorId != null">
+                vendor_id,
+            </if>
+            <if test="gameKindId != null">
+                game_kind_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="pc != null">
+                pc,
+            </if>
+            <if test="h5 != null">
+                h5,
+            </if>
+            <if test="ios != null">
+                ios,
+            </if>
+            <if test="android != null">
+                android,
+            </if>
+            <if test="pictureUrl != null">
+                picture_url,
+            </if>
+            <if test="lang != null">
+                lang,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="deletedAt != null">
+                deleted_at,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+            <if test="openMode != null">
+                open_mode,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="vendorId != null">
+                #{vendorId,jdbcType=INTEGER},
+            </if>
+            <if test="gameKindId != null">
+                #{gameKindId,jdbcType=INTEGER},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="pc != null">
+                #{pc,jdbcType=TINYINT},
+            </if>
+            <if test="h5 != null">
+                #{h5,jdbcType=TINYINT},
+            </if>
+            <if test="ios != null">
+                #{ios,jdbcType=TINYINT},
+            </if>
+            <if test="android != null">
+                #{android,jdbcType=TINYINT},
+            </if>
+            <if test="pictureUrl != null">
+                #{pictureUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="lang != null">
+                #{lang,typeHandler=com.example.appdemo.mybatis.entity.typehandler.JsonArrayTypeHandler},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deletedAt != null">
+                #{deletedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=TINYINT},
+            </if>
+            <if test="openMode != null">
+                #{openMode,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>
