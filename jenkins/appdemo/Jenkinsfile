@@ -39,5 +39,15 @@ pipeline {
             }
         }
 
+        stage ('Runtime') {
+            steps{
+                sh './jenkins/appdemo/deliver.sh'
+            }
+            post {
+                success {
+                    echo "#######################Application Started!#######################"
+                }
+            }
+        }
     }
 }
