@@ -41,7 +41,7 @@ pipeline {
 
         stage ('Runtime') {
             steps{
-                sh './jenkins/appdemo/deliver.sh'
+                sh 'sudo ./jenkins/appdemo/deliver.sh'
             }
             post {
                 success {
