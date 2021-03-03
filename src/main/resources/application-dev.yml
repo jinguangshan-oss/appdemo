@@ -21,5 +21,6 @@ mybatis:
 
 #各服务初始化方法执行开关
 flag:
+  ob-master: false
   ob-game: false
   ob-tag: true
