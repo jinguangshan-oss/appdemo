@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    tools {
+        maven 'apache-maven-3.6.3'
+        jdk 'jdk1.8.0_281'
+    }
+    stages {
+        stage ('Initialize') {
+            steps {
+                echo "JAVA_HOME = ${JAVA_HOME}"
+                echo "MAVEN_HOME = ${MAVEN_HOME}"
+            }
+            post {
+                success {
+                    echo "#######################Initialize Success!#######################"
+                }
+            }
+        }
+
+        stage ('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+            post {
+                success {
+                    echo "#######################Clean Success!#######################"
+                }
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                sh 'mvn install'
+            }
+            post {
+                success {
+                    echo "#######################Build Success!#######################"
+                }
+            }
+        }
+
+        stage ('Runtime') {
+            steps{
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh './jenkins/appdemo/deliver.sh'
+            }
+            post {
+                success {
+                    echo "#######################Application Started!#######################"
+                }
+            }
+        }
+    }
+}

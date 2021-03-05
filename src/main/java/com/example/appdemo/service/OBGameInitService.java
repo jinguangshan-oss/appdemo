@@ -36,6 +36,9 @@ public class OBGameInitService {
     @PostConstruct
     @Transactional
     public void init() throws Exception{
+        //开关
+        if(!gameFlag) return;
+
         //读取json文本
         FileInputStream fileInputStream = new FileInputStream(new File("D:\\mujun\\games\\obdy\\obdy.txt"));
         byte[] bytes = new byte[fileInputStream.available()];
