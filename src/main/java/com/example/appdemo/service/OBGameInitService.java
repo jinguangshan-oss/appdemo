@@ -40,7 +40,7 @@ public class OBGameInitService {
         if(!gameFlag) return;
 
         //读取json文本
-        FileInputStream fileInputStream = new FileInputStream(new File("D:\\mujun\\games\\obdy\\obdy.txt"));
+        FileInputStream fileInputStream = new FileInputStream(new File("D:\\mujun\\games\\obqp\\obqp.txt"));
         byte[] bytes = new byte[fileInputStream.available()];
         fileInputStream.read(bytes);
 
@@ -54,7 +54,7 @@ public class OBGameInitService {
             for (int i = 0; i < jsonArray.size() ; i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Game game = new Game();
-                game.setVendorId(95);
+                game.setVendorId(100);
                 game.setGameKindId(3);//1-电子游艺,,2-体育赛事,,3-棋牌游戏,,4-彩票游戏,,5-真人视讯,,6-电子竞技,,7-捕鱼,
                 game.setCode(jsonObject.getString("gameId"));
                 game.setName(jsonObject.getString("gameName"));
@@ -88,7 +88,7 @@ public class OBGameInitService {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 //查找对应游戏
                 Game param = new Game();
-                param.setVendorId(95);
+                param.setVendorId(100);
                 param.setCode(jsonObject.getString("gameId"));
                 Game game = gameMapper.getGameByVendorIdAndCode(param);
                 //插入对应tag
