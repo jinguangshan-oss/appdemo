@@ -55,7 +55,7 @@ public class OBGameInitService {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Game game = new Game();
                 game.setVendorId(95);
-                game.setGameKindId(1);//1-电子游艺,,2-体育赛事,,3-棋牌游戏,,4-彩票游戏,,5-真人视讯,,6-电子竞技,,7-捕鱼,
+                game.setGameKindId(3);//1-电子游艺,,2-体育赛事,,3-棋牌游戏,,4-彩票游戏,,5-真人视讯,,6-电子竞技,,7-捕鱼,
                 game.setCode(jsonObject.getString("gameId"));
                 game.setName(jsonObject.getString("gameName"));
                 game.setStatus(new Byte("1"));
@@ -95,7 +95,7 @@ public class OBGameInitService {
                 GameTags gameTags = new GameTags();
                 gameTags.setGameId(Integer.valueOf(game.getId().toString()));
                 gameTags.setDelFlag(new Byte("0"));
-                gameTags.setTagsId(1);
+                gameTags.setTagsId(5);
                 gameTags.setOperator("jingaungshan");
                 gameTagsMapper.insert(gameTags);
                 //gameTags.setCreatedAt();
